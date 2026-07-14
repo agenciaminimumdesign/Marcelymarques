@@ -1,0 +1,339 @@
+/* ==========================================
+   VARIÁVEIS DE DESIGN SYSTEM (:root)
+   ========================================== */
+:root {
+  /* Cores Principais */
+  --overlay-color: rgba(95, 52, 29, 0.62);
+  --text-color: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.95);
+  
+  /* Estados dos Botões */
+  --button-background: rgba(255, 255, 255, 0.03);
+  --button-hover-background: rgba(255, 255, 255, 0.12);
+  --button-shadow-hover: 0 10px 24px rgba(45, 23, 12, 0.22);
+  
+  /* Fundos */
+  --external-background: #170e0a; /* Fundo externo ultra premium escuro marrom */
+  
+  /* Tipografia */
+  --font-family: 'Montserrat', sans-serif;
+  
+  /* Dimensões */
+  --content-width: 470px;
+  --container-max-width: 540px;
+}
+
+/* ==========================================
+   RESET & SETUP GLOBAL
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--external-background);
+  color: var(--text-color);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   ESTRUTURA DA PÁGINA (MOBILE-FIRST)
+   ========================================== */
+.bio-page {
+  position: relative;
+  width: 100%;
+  max-width: var(--container-max-width);
+  min-height: 100vh;
+  min-height: 100dvh;
+  
+  /* Configuração da Imagem de Fundo */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  /* Efeito de container em telas maiores */
+  box-shadow: none;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Camada marrom translúcida sobre a fotografia */
+.bio-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-color);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Conteúdo da Bio */
+.bio-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--content-width);
+  padding: clamp(130px, 21dvh, 200px) 22px 45px 22px;
+  
+  /* Distribuição vertical do conteúdo */
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Mantém cabeçalho em cima, botões no centro, assinatura embaixo */
+  align-items: center;
+  gap: 40px;
+}
+
+/* ==========================================
+   CABEÇALHO INSTITUCIONAL (LOGO / NOME)
+   ========================================== */
+.bio-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.brand-logo {
+  width: 100%;
+  max-width: clamp(260px, 72vw, 370px);
+  height: auto;
+  object-fit: contain;
+  /* Garante cor branca pura mesmo com logos escuras */
+  filter: brightness(0) invert(1);
+}
+
+.brand-name {
+  font-size: clamp(27px, 7vw, 42px);
+  font-weight: 300;
+  letter-spacing: clamp(3px, 1.3vw, 8px);
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+/* Subtítulo com traços decorativos responsivos */
+.brand-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 20px);
+  width: 100%;
+  max-width: 380px;
+}
+
+.brand-subtitle-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.85);
+  max-width: clamp(15px, 6vw, 40px);
+}
+
+.brand-subtitle-text {
+  font-size: clamp(11px, 2.8vw, 15px);
+  letter-spacing: clamp(2px, 0.5vw, 4px);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
+/* ==========================================
+   BOTÕES DE CONTATO (NAVEGAÇÃO)
+   ========================================== */
+.contact-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Espaçamento entre 16px e 20px */
+  margin: auto 0; /* Centraliza verticalmente no espaço restante */
+}
+
+.contact-button {
+  width: 100%;
+  min-height: 82px;
+  border: 2px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--button-background);
+  color: var(--text-color);
+  text-decoration: none;
+  
+  /* Layout 3 colunas para alinhar perfeitamente */
+  display: grid;
+  grid-template-columns: 74px 1fr 74px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  
+  /* Efeitos de Transição Premium */
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+              background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+              box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+              letter-spacing 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Ícone */
+.btn-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  stroke: var(--text-color);
+  display: block;
+  object-fit: contain;
+}
+
+/* Texto do Botão */
+.btn-text {
+  font-family: var(--font-family);
+  font-size: clamp(14px, 3.5vw, 17px);
+  font-weight: 400;
+  letter-spacing: clamp(3px, 1vw, 7px);
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Espaçador para simetria */
+.btn-spacer {
+  width: 100%;
+}
+
+/* ==========================================
+   EFEITOS DE INTERAÇÃO (HOVER / ACTIVE)
+   ========================================== */
+.contact-button:hover {
+  transform: translateY(-3px);
+  background: var(--button-hover-background);
+  box-shadow: var(--button-shadow-hover);
+}
+
+/* Efeito sutil no espaçamento de letras do botão ativo */
+.contact-button:hover .btn-text {
+  letter-spacing: clamp(4px, 1.2vw, 8.5px);
+}
+
+/* Movimento leve do ícone para a direita */
+.contact-button:hover .btn-icon-wrapper {
+  transform: translateX(4px);
+}
+
+/* Estado de Clique */
+.contact-button:active {
+  transform: translateY(-1px) scale(0.985);
+  transition: transform 0.1s ease;
+}
+
+/* Acessibilidade de Foco */
+.contact-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
+/* ==========================================
+   ASSINATURA INFERIOR
+   ========================================== */
+.bio-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.minimum-credit {
+  font-size: clamp(13px, 3vw, 16px);
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 400;
+  text-align: center;
+  position: relative;
+  padding: 4px 8px;
+  outline: none;
+  
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Linha inferior estilizada no hover da assinatura */
+.minimum-credit::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.minimum-credit:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.minimum-credit:hover::after {
+  width: 80%;
+  left: 10%;
+}
+
+.minimum-credit:focus-visible {
+  outline: 2px solid #ffffff;
+  border-radius: 4px;
+}
+
+/* ==========================================
+   MEDIA QUERIES (DESKTOP E DISPOSITIVOS GRANDES)
+   ========================================== */
+@media (min-width: 541px) {
+  body {
+    background-color: var(--external-background);
+  }
+  
+  .bio-page {
+    border-radius: 24px;
+    margin: 40px auto;
+    min-height: calc(100vh - 80px);
+    min-height: calc(100dvh - 80px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+  }
+  
+  .bio-content {
+    min-height: calc(100vh - 80px);
+    min-height: calc(100dvh - 80px);
+  }
+}
