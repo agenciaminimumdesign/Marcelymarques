@@ -215,6 +215,8 @@ body {
   stroke: var(--text-color);
   display: block;
   object-fit: contain;
+  font-size: 32px;
+  line-height: 32px;
 }
 
 /* Texto do Botão */
