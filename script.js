@@ -6,8 +6,8 @@ const CONFIG = {
   whatsappLink: "https://wa.me/5547996927845",
   whatsappNumber: "5547996927845",
   
-  instagramLink: "https://www.instagram.com/mrqs.marcely/",
-  instagramUsername: "mrqs.marcely",
+  instagramLink: "https://www.instagram.com/marcely.gestaoodonto/",
+  instagramUsername: "marcely.gestaoodonto",
   
   emailLink: "mailto:marcely.gestaoodonto@outlook.com",
   emailAddress: "marcely.gestaoodonto@outlook.com",
